@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const searchGitHubUsers = async (username, location, minRepos) => {
+export const fetchUserData = async (username, location, minRepos) => {
   let query = `${username}`;
   if (location) query += ` location:${location}`;
   if (minRepos) query += ` repos:>=${minRepos}`;
