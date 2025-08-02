@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { fetchUserData } from "../services/githubService";
 
-function SearchBox() {
+function Search() {
   const [username, setUsername] = useState("");
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -120,4 +120,4 @@ const styles = {
   },
 };
 
-export default SearchBox;
+export default Search;
