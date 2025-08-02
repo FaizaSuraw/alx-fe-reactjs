@@ -1,10 +1,10 @@
-import './App.css'
+import SearchBox from "./components/SearchBox";
 
 function App() {
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>GitHub User Search</h1>
-      <p>Start typing a GitHub username to search...</p>
+    <div style={{ fontFamily: "Arial, sans-serif", textAlign: "center" }}>
+      <h1 style={{ marginTop: "2rem" }}>🔍 GitHub User Search</h1>
+      <SearchBox />
     </div>
   );
 }
