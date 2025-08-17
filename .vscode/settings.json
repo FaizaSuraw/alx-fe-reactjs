@@ -1,0 +1,4 @@
+{
+    "postman.settings.dotenv-detection-notification-visibility": false,
+    "tailwindCSS.experimental.configFile": "./tailwind.config.js"
+}
