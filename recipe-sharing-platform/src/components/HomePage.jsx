@@ -1,17 +1,7 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import data from "../data.json";
 
 function HomePage() {
-  const [data, setData] = useState([]);
-
-  // Fetch recipes.json from public folder
-  useEffect(() => {
-    fetch("/data.json")
-      .then((res) => res.json())
-      .then((recipes) => setData(recipes))
-      .catch((err) => console.error("Error loading recipes:", err));
-  }, []);
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -19,7 +9,7 @@ function HomePage() {
         <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
           <h1 className="text-2xl font-bold text-white">🍴 Recipe Sharing</h1>
           <nav>
-            <ul className="flex space-x-6 text-white font-medium items-center">
+            <ul className="flex space-x-6 text-white font-medium">
               <li>
                 <Link to="/" className="hover:text-yellow-300 transition">
                   Home
@@ -38,9 +28,9 @@ function HomePage() {
               <li>
                 <Link
                   to="/add-recipe"
-                  className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
+                  className="hover:text-yellow-300 transition"
                 >
-                  Add New Recipe
+                  Add Recipe
                 </Link>
               </li>
             </ul>
