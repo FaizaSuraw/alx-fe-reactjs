@@ -1,9 +1,12 @@
+import React from "react";
+import HomePage from "./components/HomePage";
+
 function App() {
   return (
-    <h1 className="text-4xl font-bold text-blue-500 underline">
-      Recipe Sharing Platform 🚀
-    </h1>
-  )
+    <div className="min-h-screen bg-gray-100">
+      <HomePage />
+    </div>
+  );
 }
 
 export default App;
