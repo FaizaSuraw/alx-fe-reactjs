@@ -19,7 +19,7 @@ function HomePage() {
         <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
           <h1 className="text-2xl font-bold text-white">🍴 Recipe Sharing</h1>
           <nav>
-            <ul className="flex space-x-6 text-white font-medium">
+            <ul className="flex space-x-6 text-white font-medium items-center">
               <li>
                 <Link to="/" className="hover:text-yellow-300 transition">
                   Home
@@ -34,6 +34,14 @@ function HomePage() {
                 <a href="#contact" className="hover:text-yellow-300 transition">
                   Contact
                 </a>
+              </li>
+              <li>
+                <Link
+                  to="/add-recipe"
+                  className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
+                >
+                  Add New Recipe
+                </Link>
               </li>
             </ul>
           </nav>
