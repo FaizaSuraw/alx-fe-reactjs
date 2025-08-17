@@ -60,7 +60,7 @@ function HomePage() {
         <h3 className="text-2xl font-semibold text-gray-800 mb-6">
           Featured Recipes
         </h3>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {data.map((recipe) => (
             <Link
               to={`/recipe/${recipe.id}`}
