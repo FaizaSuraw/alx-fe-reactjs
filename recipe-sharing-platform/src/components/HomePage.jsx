@@ -6,7 +6,7 @@ function HomePage() {
 
   // Fetch recipes.json from public folder
   useEffect(() => {
-    fetch("/recipes.json")
+    fetch("/data.json")
       .then((res) => res.json())
       .then((recipes) => setData(recipes))
       .catch((err) => console.error("Error loading recipes:", err));

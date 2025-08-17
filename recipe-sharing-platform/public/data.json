@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "/images/carbonara.png",
+    "ingredients": [
+      "200g spaghetti",
+      "100g pancetta",
+      "2 large eggs",
+      "50g grated Parmesan cheese",
+      "Salt and black pepper to taste"
+    ],
+    "instructions": "Cook the spaghetti. Fry the pancetta until crisp. Beat the eggs with Parmesan. Combine everything with hot pasta and season with pepper."
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+    "image": "/images/tikka.png",
+    "ingredients": [
+      "500g chicken breast",
+      "1 cup yogurt",
+      "2 tbsp tikka masala paste",
+      "1 cup tomato puree",
+      "1/2 cup cream"
+    ],
+    "instructions": "Marinate chicken in yogurt and tikka paste. Grill until cooked. Simmer in tomato puree and cream until smooth."
+  },
+  {
+    "id": 3,
+    "title": "Vegetable Stir Fry",
+    "summary": "A quick and healthy mix of vegetables sautéed with soy sauce and garlic.",
+    "image": "/images/stirfry.png",
+    "ingredients": [
+      "1 broccoli head",
+      "1 red bell pepper",
+      "2 carrots",
+      "2 tbsp soy sauce",
+      "2 garlic cloves"
+    ],
+    "instructions": "Chop all vegetables. Heat oil in a pan, add garlic, then toss vegetables. Stir-fry quickly with soy sauce."
+  }
+]

@@ -1,52 +1,51 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function RecipeDetail() {
+const RecipeDetail = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/recipes.json")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch recipes.json");
-        return res.json();
-      })
+    fetch("/data.json")
+      .then((res) => res.json())
       .then((recipes) => {
-        const found = recipes.find((r) => String(r.id) === id);
-        setRecipe(found || null);
+        const found = recipes.find((r) => r.id === parseInt(id));
+        setRecipe(found);
       })
-      .catch((err) => {
-        console.error("Error loading recipe:", err);
-      })
-      .finally(() => setLoading(false));
+      .catch((err) => console.error("Error loading recipe:", err));
   }, [id]);
 
-  if (loading) return <p className="p-6">Loading...</p>;
-  if (!recipe) return <p className="p-6">Recipe not found.</p>;
+  if (!recipe) {
+    return <h2 className="text-center mt-10">Loading recipe...</h2>;
+  }
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h2 className="text-3xl font-bold mb-4">{recipe.title}</h2>
+    <div className="max-w-3xl mx-auto p-6">
+      <Link to="/" className="text-green-600 hover:underline">
+        ← Back to Home
+      </Link>
+
+      <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
       <img
         src={recipe.image}
         alt={recipe.title}
-        className="w-full h-64 object-cover rounded-lg shadow"
+        className="w-full h-64 object-cover rounded-lg mb-4"
       />
-      <p className="mt-4 text-gray-700">{recipe.summary}</p>
+      <p className="text-gray-700 mb-4">{recipe.summary}</p>
 
-      {recipe.instructions && Array.isArray(recipe.instructions) && (
-        <div className="mt-6">
-          <h3 className="text-xl font-semibold mb-2">Instructions</h3>
-          <ol className="list-decimal pl-6 space-y-2 text-gray-700">
-            {recipe.instructions.map((step, i) => (
-              <li key={i}>{step}</li>
-            ))}
-          </ol>
-        </div>
-      )}
+      <h2 className="text-xl font-semibold mb-2">Ingredients</h2>
+      <ul className="list-disc list-inside mb-4">
+        {recipe.ingredients?.map((ingredient, index) => (
+          <li key={index} className="text-gray-600">
+            {ingredient}
+          </li>
+        ))}
+      </ul>
+
+      <h2 className="text-xl font-semibold mb-2">Instructions</h2>
+      <p className="text-gray-700">{recipe.instructions}</p>
     </div>
   );
-}
+};
 
 export default RecipeDetail;
