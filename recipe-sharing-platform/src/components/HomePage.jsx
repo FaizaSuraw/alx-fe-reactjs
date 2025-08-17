@@ -1,7 +1,17 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import data from "../data.json";
 
 function HomePage() {
+  const [data, setData] = useState([]);
+
+  // Fetch recipes.json from public folder
+  useEffect(() => {
+    fetch("/recipes.json")
+      .then((res) => res.json())
+      .then((recipes) => setData(recipes))
+      .catch((err) => console.error("Error loading recipes:", err));
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -16,18 +26,12 @@ function HomePage() {
                 </Link>
               </li>
               <li>
-                <a
-                  href="#recipes"
-                  className="hover:text-yellow-300 transition"
-                >
+                <a href="#recipes" className="hover:text-yellow-300 transition">
                   Recipes
                 </a>
               </li>
               <li>
-                <a
-                  href="#contact"
-                  className="hover:text-yellow-300 transition"
-                >
+                <a href="#contact" className="hover:text-yellow-300 transition">
                   Contact
                 </a>
               </li>
@@ -71,7 +75,7 @@ function HomePage() {
                   {recipe.title}
                 </h4>
                 <p className="text-sm text-gray-600 mt-2 line-clamp-2">
-                  {recipe.description}
+                  {recipe.summary}
                 </p>
               </div>
             </Link>
