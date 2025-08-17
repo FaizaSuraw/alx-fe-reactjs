@@ -1,10 +1,16 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import data from "../data.json";
+import dataJson from "../data.json";
 
 function HomePage() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    setData(dataJson);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-green-600 shadow-md">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
           <h1 className="text-2xl font-bold text-white">🍴 Recipe Sharing</h1>
@@ -38,7 +44,6 @@ function HomePage() {
         </div>
       </header>
 
-      {/* Hero Section */}
       <section className="bg-green-100 py-12">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">
@@ -51,7 +56,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Recipes Grid */}
       <section id="recipes" className="max-w-7xl mx-auto px-6 py-12">
         <h3 className="text-2xl font-semibold text-gray-800 mb-6">
           Featured Recipes
