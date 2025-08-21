@@ -4,17 +4,27 @@ export default function RegistrationForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let newErrors = {};
 
-    if (!username || !email || !password) {
-      setError("All fields are required!");
-      return;
+    if (!username) {
+      newErrors.username = "Username is required";
+    }
+    if (!email) {
+      newErrors.email = "Email is required";
+    }
+    if (!password) {
+      newErrors.password = "Password is required";
     }
 
-    setError("");
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
     console.log("Form submitted:", { username, email, password });
     alert("Registration successful!");
   };
@@ -22,8 +32,6 @@ export default function RegistrationForm() {
   return (
     <form onSubmit={handleSubmit} className="p-4 max-w-md mx-auto border rounded">
       <h2 className="text-xl mb-4">Register</h2>
-
-      {error && <p className="text-red-500">{error}</p>}
 
       <div className="mb-2">
         <label className="block">Username:</label>
@@ -34,6 +42,7 @@ export default function RegistrationForm() {
           onChange={(e) => setUsername(e.target.value)}
           className="border p-2 w-full"
         />
+        {errors.username && <p className="text-red-500">{errors.username}</p>}
       </div>
 
       <div className="mb-2">
@@ -45,6 +54,7 @@ export default function RegistrationForm() {
           onChange={(e) => setEmail(e.target.value)}
           className="border p-2 w-full"
         />
+        {errors.email && <p className="text-red-500">{errors.email}</p>}
       </div>
 
       <div className="mb-2">
@@ -56,6 +66,7 @@ export default function RegistrationForm() {
           onChange={(e) => setPassword(e.target.value)}
           className="border p-2 w-full"
         />
+        {errors.password && <p className="text-red-500">{errors.password}</p>}
       </div>
 
       <button type="submit" className="bg-blue-500 text-white px-4 py-2 mt-2 rounded">
