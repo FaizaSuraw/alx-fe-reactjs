@@ -19,8 +19,8 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/blog/:postId" element={<BlogPost />} />
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
