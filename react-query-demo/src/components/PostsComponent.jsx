@@ -19,8 +19,10 @@ export default function PostsComponent() {
   } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
-    staleTime: 5000, 
-    cacheTime: 1000 * 60 * 5, 
+    staleTime: 5000,
+    cacheTime: 1000 * 60 * 5,
+    refetchOnWindowFocus: true,
+    keepPreviousData: true,     
   });
 
   if (isLoading) return <p className="text-blue-500">Loading posts...</p>;
