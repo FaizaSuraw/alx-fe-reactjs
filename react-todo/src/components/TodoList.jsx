@@ -1,66 +1,31 @@
 import React, { useState } from "react";
 
 const TodoList = () => {
-  const [todos, setTodos] = useState([
-    { id: 1, text: "Learn React", completed: false },
-    { id: 2, text: "Build a Todo App", completed: false },
-  ]);
+  const [todos, setTodos] = useState(["Learn React", "Build a Todo App"]);
   const [newTodo, setNewTodo] = useState("");
 
-  const addTodo = (e) => {
-    e.preventDefault();
-    if (newTodo.trim()) {
-      setTodos([...todos, { id: Date.now(), text: newTodo, completed: false }]);
+  const addTodo = () => {
+    if (newTodo.trim() !== "") {
+      setTodos([...todos, newTodo]);
       setNewTodo("");
     }
-  };
-
-  const toggleTodo = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
-  };
-
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (
     <div>
       <h2>Todo List</h2>
-      <form onSubmit={addTodo} data-testid="add-todo-form">
-        <input
-          data-testid="todo-input"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-        />
-        <button type="submit">Add</button>
-      </form>
-      <ul>
-        {todos.map((todo) => (
-          <li
-            key={todo.id}
-            onClick={() => toggleTodo(todo.id)}
-            style={{
-              textDecoration: todo.completed ? "line-through" : "none",
-              cursor: "pointer",
-            }}
-          >
-            {todo.text}
-            <button
-              data-testid="delete-btn"
-              onClick={(e) => {
-                e.stopPropagation();
-                deleteTodo(todo.id);
-              }}
-            >
-              Delete
-            </button>
-          </li>
+      <ul data-testid="todo-list">
+        {todos.map((todo, index) => (
+          <li key={index}>{todo}</li>
         ))}
       </ul>
+      <input
+        type="text"
+        placeholder="Add a todo"
+        value={newTodo}
+        onChange={(e) => setNewTodo(e.target.value)}
+      />
+      <button onClick={addTodo}>Add</button>
     </div>
   );
 };
