@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 
 function TodoList() {
-  const [todos, setTodos] = useState([
-    "Learn React",
-    "Build a Todo App",
-  ]);
+  const [todos, setTodos] = useState(["Buy groceries", "Clean the house"]);
   const [newTodo, setNewTodo] = useState("");
 
   const addTodo = () => {
-    if (newTodo.trim() !== "") {
-      setTodos([...todos, newTodo]);
-      setNewTodo("");
-    }
+    if (newTodo.trim() === "") return;
+    setTodos([...todos, newTodo]);
+    setNewTodo("");
   };
 
   const removeTodo = (index) => {
@@ -24,23 +20,18 @@ function TodoList() {
       <ul data-testid="todo-list">
         {todos.map((todo, index) => (
           <li key={index}>
-            {todo}{" "}
-            <button
-              data-testid="delete-btn"
-              onClick={() => removeTodo(index)}
-            >
-              Delete
-            </button>
+            {todo}
+            <button onClick={() => removeTodo(index)}>Remove</button>
           </li>
         ))}
       </ul>
       <input
         type="text"
-        placeholder="Add a todo"
+        placeholder="Add a new todo"
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
       />
-      <button onClick={addTodo}>Add</button>
+      <button onClick={addTodo}>Add Todo</button>
     </div>
   );
 }
