@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 
-const TodoList = () => {
-  const [todos, setTodos] = useState(["Learn React", "Build a Todo App"]);
+function TodoList() {
+  const [todos, setTodos] = useState([
+    "Learn React",
+    "Build a Todo App",
+  ]);
   const [newTodo, setNewTodo] = useState("");
 
   const addTodo = () => {
@@ -11,12 +14,24 @@ const TodoList = () => {
     }
   };
 
+  const removeTodo = (index) => {
+    setTodos(todos.filter((_, i) => i !== index));
+  };
+
   return (
     <div>
       <h2>Todo List</h2>
       <ul data-testid="todo-list">
         {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
+          <li key={index}>
+            {todo}{" "}
+            <button
+              data-testid="delete-btn"
+              onClick={() => removeTodo(index)}
+            >
+              Delete
+            </button>
+          </li>
         ))}
       </ul>
       <input
@@ -28,6 +43,6 @@ const TodoList = () => {
       <button onClick={addTodo}>Add</button>
     </div>
   );
-};
+}
 
 export default TodoList;
