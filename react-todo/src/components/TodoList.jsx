@@ -1,42 +1,38 @@
 import React, { useState } from "react";
 
-const TodoList = () => {
+function TodoList() {
   const [todos, setTodos] = useState(["Learn React", "Build a Todo App"]);
   const [newTodo, setNewTodo] = useState("");
 
-  const addTodo = () => {
-    if (newTodo.trim() !== "") {
-      setTodos([...todos, newTodo]);
-      setNewTodo("");
-    }
+  const handleAdd = () => {
+    if (newTodo.trim() === "") return;
+    setTodos([...todos, newTodo]);
+    setNewTodo("");
   };
 
-  const removeTodo = (index) => {
-    const updatedTodos = todos.filter((_, i) => i !== index);
-    setTodos(updatedTodos);
+  const handleRemove = (index) => {
+    setTodos(todos.filter((_, i) => i !== index));
   };
 
   return (
     <div>
-      <h2>Todo List</h2>
+      <h1>Todo List</h1>
       <input
         type="text"
-        placeholder="Add a new todo"
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
+        placeholder="Enter todo"
       />
-      <button onClick={addTodo}>Add</button>
-
+      <button onClick={handleAdd}>Add</button>
       <ul>
         {todos.map((todo, index) => (
-          <li key={index} data-testid="todo-item">
-            {todo}
-            <button onClick={() => removeTodo(index)}>Remove</button>
+          <li key={index}>
+            {todo} <button onClick={() => handleRemove(index)}>Remove</button>
           </li>
         ))}
       </ul>
     </div>
   );
-};
+}
 
 export default TodoList;
